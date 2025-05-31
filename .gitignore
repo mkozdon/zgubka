@@ -1,0 +1,23 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variable files (all levels)
+**/.env
+**/.env.example
+
+# SQLite database (dev only)
+backend/db/zgubka.db
+
+# Docker artifacts (optional)
+*.log
+*.pid
+
+# VS Code and system files
+.vscode/
+.DS_Store
