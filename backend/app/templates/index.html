@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zgubka - Strona Główna</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module">
+    import { Locate, Camera, Bell, MailQuestion, SearchCheck, HandHelping } from "https://cdn.jsdelivr.net/npm/lucide@latest/+esm";
+    Locate({ color: "#1e3a8a" }).mount("#icon-location");
+    Camera({ color: "#1e3a8a" }).mount("#icon-photo");
+    Bell({ color: "#1e3a8a" }).mount("#icon-alert");
+    MailQuestion({ color: "#1e3a8a" }).mount("#icon-contact");
+    SearchCheck({ color: "#ffffff" }).mount("#icon-lost");
+    HandHelping({ color: "#1e3a8a" }).mount("#icon-found");
+  </script>
+</head>
+<body class="bg-blue-50 text-blue-900 font-sans">
+
+  <!-- NAVIGATION -->
+  <header class="bg-white shadow-md px-6 py-4 flex justify-between items-center">
+    <div class="text-2xl font-bold text-blue-600">Zgubka</div>
+    <nav class="space-x-4 text-sm font-medium">
+      <a href="#features" class="hover:text-blue-600 transition">Funkcje</a>
+      <a href="#contact" class="hover:text-blue-600 transition">Kontakt</a>
+      <a href="/login" class="hover:text-blue-600 transition">Zaloguj się</a>
+    </nav>
+    <select class="ml-4 border border-gray-300 rounded px-2 py-1 text-sm text-blue-800">
+      <option value="pl" selected>PL</option>
+      <option value="en">EN</option>
+    </select>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="text-center py-16 px-4">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-blue-700 mb-3">Zgubiłeś lub znalazłeś coś?</h1>
+    <p class="text-lg text-blue-800 mb-8 max-w-xl mx-auto">Zgubka łączy ludzi, którzy zgubili lub znaleźli przedmioty – szybko, lokalnie i bezpiecznie.</p>
+
+    <div class="flex justify-center gap-4 flex-wrap">
+      <a href="/report" class="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition font-semibold">
+        <span id="icon-lost" class="w-5 h-5"></span>
+        Zgubiłem coś
+      </a>
+      <a href="/found" class="flex items-center gap-2 px-6 py-3 bg-white border border-blue-300 text-blue-700 rounded-lg shadow hover:bg-blue-100 transition font-semibold">
+        <span id="icon-found" class="w-5 h-5"></span>
+        Znalazłem coś
+      </a>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section id="features" class="bg-white py-12 px-6">
+    <div class="max-w-5xl mx-auto grid sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div class="p-4 bg-blue-100 rounded-lg hover:shadow-lg transition">
+        <div id="icon-location" class="mx-auto mb-2 w-6 h-6"></div>
+        <h3 class="font-bold text-blue-700 mb-1">Lokalizacja</h3>
+        <p class="text-sm text-blue-900">Dodaj miejsce zguby lub znaleziska.</p>
+      </div>
+      <div class="p-4 bg-blue-100 rounded-lg hover:shadow-lg transition">
+        <div id="icon-photo" class="mx-auto mb-2 w-6 h-6"></div>
+        <h3 class="font-bold text-blue-700 mb-1">Zdjęcia</h3>
+        <p class="text-sm text-blue-900">Ułatw identyfikację przedmiotu.</p>
+      </div>
+      <div class="p-4 bg-blue-100 rounded-lg hover:shadow-lg transition">
+        <div id="icon-alert" class="mx-auto mb-2 w-6 h-6"></div>
+        <h3 class="font-bold text-blue-700 mb-1">Powiadomienia</h3>
+        <p class="text-sm text-blue-900">Otrzymuj alerty o dopasowaniach.</p>
+      </div>
+      <div class="p-4 bg-blue-100 rounded-lg hover:shadow-lg transition">
+        <div id="icon-contact" class="mx-auto mb-2 w-6 h-6"></div>
+        <h3 class="font-bold text-blue-700 mb-1">Anonimowy kontakt</h3>
+        <p class="text-sm text-blue-900">Wymieniaj się informacjami bezpiecznie.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="text-center text-sm text-blue-700 py-6 mt-12">
+    &copy; 2025 Zgubka • <a href="mailto:kontakt@zgubka.pl" class="underline hover:text-blue-800">kontakt@zgubka.pl</a>
+  </footer>
+
+</body>
+</html>
