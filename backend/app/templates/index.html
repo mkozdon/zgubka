@@ -14,6 +14,21 @@
     SearchCheck({ color: "#ffffff" }).mount("#icon-lost");
     HandHelping({ color: "#1e3a8a" }).mount("#icon-found");
   </script>
+  <style>
+    /* Modal overlay */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0; /* top:0; left:0; right:0; bottom:0 */
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+  </style>
 </head>
 <body class="bg-blue-50 text-blue-900 font-sans">
 
@@ -23,7 +38,8 @@
     <nav class="space-x-4 text-sm font-medium">
       <a href="#features" class="hover:text-blue-600 transition">Funkcje</a>
       <a href="#contact" class="hover:text-blue-600 transition">Kontakt</a>
-      <a href="{{ url_for('login') }}" class="hover:text-blue-600 transition">Zaloguj się</a>
+      <button id="openLoginBtn" class="hover:text-blue-600 transition focus:outline-none">Zaloguj się</button>
+      <button id="openRegisterBtn" class="hover:text-blue-600 transition focus:outline-none">Zarejestruj się</button>
     </nav>
     <select class="ml-4 border border-gray-300 rounded px-2 py-1 text-sm text-blue-800">
       <option value="pl" selected>PL</option>
@@ -78,6 +94,113 @@
   <footer id="contact" class="text-center text-sm text-blue-700 py-6 mt-12">
     &copy; 2025 Zgubka • <a href="mailto:kontakt@zgubka.pl" class="underline hover:text-blue-800">kontakt@zgubka.pl</a>
   </footer>
+
+  <!-- LOGIN MODAL -->
+  <div id="loginModal" class="modal-overlay">
+    <div class="bg-white rounded-lg shadow-lg p-8 w-80 max-w-full relative">
+      <button id="closeLogin" class="absolute top-3 right-3 text-blue-700 hover:text-blue-900 font-bold text-xl">&times;</button>
+      <h2 class="text-2xl font-bold mb-4 text-blue-900">Zaloguj się</h2>
+      <form method="post" action="/login" class="flex flex-col gap-4">
+        <input
+          type="text"
+          name="username"
+          placeholder="Nazwa użytkownika"
+          required
+          class="border border-blue-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Hasło"
+          required
+          class="border border-blue-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button
+          type="submit"
+          class="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition font-semibold"
+        >
+          Zaloguj się
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- REGISTER MODAL -->
+  <div id="registerModal" class="modal-overlay">
+    <div class="bg-white rounded-lg shadow-lg p-8 w-80 max-w-full relative">
+      <button id="closeRegister" class="absolute top-3 right-3 text-blue-700 hover:text-blue-900 font-bold text-xl">&times;</button>
+      <h2 class="text-2xl font-bold mb-4 text-blue-900">Zarejestruj się</h2>
+      <form method="post" action="/register" class="flex flex-col gap-4">
+        <input
+          type="text"
+          name="username"
+          placeholder="Nazwa użytkownika"
+          required
+          class="border border-blue-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+          class="border border-blue-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Hasło"
+          required
+          class="border border-blue-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button
+          type="submit"
+          class="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition font-semibold"
+        >
+          Zarejestruj się
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Elements
+    const loginModal = document.getElementById('loginModal');
+    const registerModal = document.getElementById('registerModal');
+    const openLoginBtn = document.getElementById('openLoginBtn');
+    const openRegisterBtn = document.getElementById('openRegisterBtn');
+    const closeLoginBtn = document.getElementById('closeLogin');
+    const closeRegisterBtn = document.getElementById('closeRegister');
+
+    // Open modals
+    openLoginBtn.addEventListener('click', () => {
+      loginModal.classList.add('active');
+      registerModal.classList.remove('active'); // close other if open
+    });
+    openRegisterBtn.addEventListener('click', () => {
+      registerModal.classList.add('active');
+      loginModal.classList.remove('active'); // close other if open
+    });
+
+    // Close modals by close buttons
+    closeLoginBtn.addEventListener('click', () => {
+      loginModal.classList.remove('active');
+    });
+    closeRegisterBtn.addEventListener('click', () => {
+      registerModal.classList.remove('active');
+    });
+
+    // Close modals by clicking outside modal content
+    loginModal.addEventListener('click', (e) => {
+      if (e.target === loginModal) {
+        loginModal.classList.remove('active');
+      }
+    });
+    registerModal.addEventListener('click', (e) => {
+      if (e.target === registerModal) {
+        registerModal.classList.remove('active');
+      }
+    });
+  </script>
 
 </body>
 </html>
