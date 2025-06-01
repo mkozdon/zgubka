@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zgubka - Panel Użytkownika</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module">
+    import { ListTodo, Bell, Settings, LogOut } from "https://cdn.jsdelivr.net/npm/lucide@latest/+esm";
+    ListTodo({ color: "#1e3a8a" }).mount("#icon-submissions");
+    Bell({ color: "#1e3a8a" }).mount("#icon-matches");
+    Settings({ color: "#1e3a8a" }).mount("#icon-settings");
+    LogOut({ color: "#1e3a8a" }).mount("#icon-logout");
+  </script>
+</head>
+<body class="bg-blue-50 text-blue-900 font-sans">
+
+  <!-- NAVIGATION -->
+  <header class="bg-white shadow-md px-6 py-4 flex justify-between items-center">
+    <div class="text-2xl font-bold text-blue-600">Zgubka</div>
+    <nav class="space-x-4 text-sm font-medium">
+      <a href="/dashboard" class="hover:text-blue-600 transition">Panel</a>
+      <a href="/report" class="hover:text-blue-600 transition">Zgłoś przedmiot</a>
+      <a href="/found" class="hover:text-blue-600 transition">Znalazłem coś</a>
+    </nav>
+    <select class="ml-4 border border-gray-300 rounded px-2 py-1 text-sm text-blue-800">
+      <option value="pl" selected>PL</option>
+      <option value="en">EN</option>
+    </select>
+  </header>
+
+  <!-- DASHBOARD SECTION -->
+  <section class="text-center py-16 px-4">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-blue-700 mb-3">Witaj w swoim panelu</h1>
+    <p class="text-lg text-blue-800 mb-8 max-w-xl mx-auto">Zarządzaj swoimi zgłoszeniami, dopasowaniami i ustawieniami konta.</p>
+
+    <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-4 max-w-5xl mx-auto text-center">
+      <a href="/my-items" class="p-4 bg-blue-100 rounded-lg hover:shadow-lg transition block">
+        <div id="icon-submissions" class="mx-auto mb-2 w-6 h-6"></div>
+        <h3 class="font-bold text-blue-700 mb-1">Moje zgłoszenia</h3>
+        <p class="text-sm text-blue-900">Przeglądaj i edytuj zgubione lub znalezione przedmioty.</p>
+      </a>
+      <a href="/matches" class="p-4 bg-blue-100 rounded-lg hover:shadow-lg transition block">
+        <div id="icon-matches" class="mx-auto mb-2 w-6 h-6"></div>
+        <h3 class="font-bold text-blue-700 mb-1">Nowe dopasowania</h3>
+        <p class="text-sm text-blue-900">Sprawdź potencjalne dopasowania do twoich zgłoszeń.</p>
+      </a>
+      <a href="/settings" class="p-4 bg-blue-100 rounded-lg hover:shadow-lg transition block">
+        <div id="icon-settings" class="mx-auto mb-2 w-6 h-6"></div>
+        <h3 class="font-bold text-blue-700 mb-1">Ustawienia</h3>
+        <p class="text-sm text-blue-900">Zmień hasło, e-mail lub preferencje konta.</p>
+      </a>
+      <a href="/logout" class="p-4 bg-blue-100 rounded-lg hover:shadow-lg transition block">
+        <div id="icon-logout" class="mx-auto mb-2 w-6 h-6"></div>
+        <h3 class="font-bold text-blue-700 mb-1">Wyloguj się</h3>
+        <p class="text-sm text-blue-900">Zakończ sesję użytkownika.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="text-center text-sm text-blue-700 py-6 mt-12">
+    &copy; 2025 Zgubka • <a href="mailto:kontakt@zgubka.pl" class="underline hover:text-blue-800">kontakt@zgubka.pl</a>
+  </footer>
+
+</body>
+</html>
